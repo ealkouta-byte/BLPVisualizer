@@ -18,9 +18,9 @@ def setup_initial_state():
 # Add each case here
 TEST_CASES = {
     1: [("read", "alice", "emails.txt")], # Alice reads emails.txt
-    2: [], # Alice reads password.txt
-    3: [], # Eve reads pub.txt
-    4: [], # Eve reads emails.txt
+    2: [("read", "alice", "password.txt")], # Alice reads password.txt
+    3: [("read", "eve", "pub.txt")], # Eve reads pub.txt
+    4: [("read", "eve", "emails.txt")], # Eve reads emails.txt
     5: [], # Bob reads password.txt
     6: [], # Alice reads emails.txt then writes to pub.txt
     7: [], # Alice reads emails.txt then writes to password.txt
