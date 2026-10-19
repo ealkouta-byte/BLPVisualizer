@@ -27,14 +27,14 @@ TEST_CASES = {
     8: [("read", "alice", "emails.txt"), ("write", "alice", "emails.txt"), ("read", "alice", "username.txt"), ("write", "alice", "emails.txt")], # Alice reads emails.txt then writes to emails.txt, next she reads username.txt and writes to emails.txt
     9: [("read", "alice", "emails.txt"), ("write", "alice", "username.txt"), ("read", "alice", "password.txt"), ("write", "alice", "password.txt")], # Alice reads emails.txt then writes to username.txt, next she reads password.txt and finally writes to password.txt
     10: [("read", "alice", "pub.txt"), ("write", "alice", "emails.txt"), ("read", "bob", "emails.txt")], # Alice reads pub.txt then writes to emails.txt, Bob then reads emails.txt
-    11: [], # Alice reads pub.txt then writes to username.txt, Bob then reads username.txt
-    12: [], # Alice reads pub.txt then writes to password.txt, Bob then reads password.txt
-    13: [], # Alice reads pub.txt then writes to emails.txt, Eve then reads emails.txt
-    14: [], # Alice reads emails.txt then writes to pub.txt, Eve then reads pub.txt
+    11: [("read", "alice", "pub.txt"), ("write", "alice", "username.txt"), ("read", "bob", "username.txt")], # Alice reads pub.txt then writes to username.txt, Bob then reads username.txt
+    12: [("read", "alice", "pub.txt"), ("write", "alice", "password.txt"), ("read", "bob", "password.txt")], # Alice reads pub.txt then writes to password.txt, Bob then reads password.txt
+    13: [("read", "alice", "pub.txt"), ("write", "alice", "emails.txt"), ("read", "eve", "emails.txt")], # Alice reads pub.txt then writes to emails.txt, Eve then reads emails.txt
+    14: [(), (), ()], # Alice reads emails.txt then writes to pub.txt, Eve then reads pub.txt
     15: [("set_level", "alice", "S"), ()], # Alice sets her level to S (secret) then reads username.txt
-    16: [], # Alice reads emails.txt then sets her level to U (unclassified) and writes to pub.txt, Eve then reads pub.txt
-    17: [], # Alice reads username.txt then sets her level to C (classified) and writes to emails.txt, Eve then reads emails.txt
-    18: [] # Eve reads pub.txt then reads emails.txt
+    16: [(), (), (), ()], # Alice reads emails.txt then sets her level to U (unclassified) and writes to pub.txt, Eve then reads pub.txt
+    17: [(), (), (), ()], # Alice reads username.txt then sets her level to C (classified) and writes to emails.txt, Eve then reads emails.txt
+    18: [(), ()] # Eve reads pub.txt then reads emails.txt
 }
 
 def execute_commands(blp, commands):
