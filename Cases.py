@@ -21,9 +21,9 @@ TEST_CASES = {
     2: [("read", "alice", "password.txt")], # Alice reads password.txt
     3: [("read", "eve", "pub.txt")], # Eve reads pub.txt
     4: [("read", "eve", "emails.txt")], # Eve reads emails.txt
-    5: [], # Bob reads password.txt
-    6: [], # Alice reads emails.txt then writes to pub.txt
-    7: [], # Alice reads emails.txt then writes to password.txt
+    5: [("read", "bob", "password.txt")], # Bob reads password.txt
+    6: [("read", "alice", "emails.txt"), ("write", "alice", "pub.txt")], # Alice reads emails.txt then writes to pub.txt
+    7: [("read", "alice", "emails.txt"), ("write", "alice", "password.txt")], # Alice reads emails.txt then writes to password.txt
     8: [(), (), (), ()], # Alice reads emails.txt then writes to emails.txt, next she reads username.txt and writes to emails.txt
     9: [], # Alice reads emails.txt then writes to username.txt, next she reads password.txt and finally writes to password.txt
     10: [], # Alice reads pub.txt then writes to emails.txt, Bob then reads emails.txt
